@@ -1,0 +1,76 @@
+function getUsers(amount) {
+  var request = NSURLRequest.requestWithURL(NSURL.URLWithString("http://api.randomuser.me/?results="+amount));
+  var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
+  return JSON.parse(NSString.alloc().initWithData_encoding(response, NSUTF8StringEncoding));
+}
+
+var avatar = function(context) {
+  var selection = context.selection;
+  var users = getUsers(selection.count());
+
+  for (var i=0; i < selection.count(); i++){
+    var layer = selection[i];
+    var fill = layer.style().fills().firstObject();
+    var image = getImage(users.results[i].user.picture.large)
+    fill.setFillType(4);
+    fill.setPatternImage(image);
+    fill.setPatternFillType(1);
+  }
+};
+
+var email = function(context) {
+  var selection = context.selection;
+  var users = getUsers(selection.count());
+
+  for (var i=0; i < selection.count(); i++){
+    var layer = selection[i];
+    layer.setStringValue(users.results[i].user.email);
+  }
+}
+
+var name = function(context) {
+  var selection = context.selection;
+  var users = getUsers(selection.count());
+
+  for (var i=0; i < selection.count(); i++){
+    var layer = selection[i];
+    layer.setStringValue(users.results[i].user.name.first+" "+users.results[i].user.name.last);
+  }
+}
+
+var username = function(context) {
+  var selection = context.selection;
+  var users = getUsers(selection.count());
+
+  for (var i=0; i < selection.count(); i++){
+    var layer = selection[i];
+    layer.setStringValue(users.results[i].user.username);
+  }
+}
+
+var phone = function(context) {
+  var selection = context.selection;
+  var users = getUsers(selection.count());
+
+  for (var i=0; i < selection.count(); i++){
+    var layer = selection[i];
+    layer.setStringValue(users.results[i].user.phone);
+  }
+}
+
+var userLocation = function(context) {
+  var selection = context.selection;
+  var users = getUsers(selection.count());
+
+  for (var i=0; i < selection.count(); i++){
+    var layer = selection[i];
+    var location  = users.results[i].user.location
+    layer.setStringValue(location.street+", "+location.city+", "+location.state+", "+location.zip);
+  }
+}
+
+function getImage(url) {
+  var request = NSURLRequest.requestWithURL(NSURL.URLWithString(url));
+  var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
+  return NSImage.alloc().initWithData(response);
+}

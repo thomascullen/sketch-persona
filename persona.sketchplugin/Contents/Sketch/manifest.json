@@ -1,0 +1,63 @@
+{
+  "author" : "",
+  "commands" : [
+    {
+      "script" : "persona.cocoascript",
+      "handler" : "avatar",
+      "shortcut": "",
+      "name" : "Avatar",
+      "identifier" : "avatar"
+    },
+    {
+      "script" : "persona.cocoascript",
+      "handler" : "email",
+      "shortcut": "",
+      "name" : "Email",
+      "identifier" : "email"
+    },
+    {
+      "script" : "persona.cocoascript",
+      "handler" : "name",
+      "shortcut": "",
+      "name" : "Name",
+      "identifier" : "name"
+    },
+    {
+      "script" : "persona.cocoascript",
+      "handler" : "username",
+      "shortcut": "",
+      "name" : "Username",
+      "identifier" : "username"
+    },
+    {
+      "script" : "persona.cocoascript",
+      "handler" : "phone",
+      "shortcut": "",
+      "name" : "Phone",
+      "identifier" : "phone"
+    },
+    {
+      "script" : "persona.cocoascript",
+      "handler" : "userLocation",
+      "shortcut": "",
+      "name" : "Address",
+      "identifier" : "location"
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "avatar",
+      "name",
+      "email",
+      "username",
+      "phone",
+      "location"
+    ],
+    "title" : "persona"
+  },
+  "identifier" : "com.example.sketch.b41fef20-ec7f-4fac-9659-5324bc35cd0d",
+  "version" : "1.0",
+  "description" : "",
+  "authorEmail" : "",
+  "name" : "persona"
+}
